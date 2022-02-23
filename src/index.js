@@ -7,10 +7,11 @@ const session = require('express-session')
 const MySQLStore = require('express-mysql-session')
 const passport = require('passport')
 
-// const { database } = require('./config/keys')
+const { database } = require('./config/keys')
 
 //Initializations
 const app = express()
+require('./lib/passport')
 
 //Settings
 app.set('port', process.env.PORT || 5000)
@@ -24,22 +25,25 @@ app.engine('.hbs', exphbs.engine({
 }))
 app.set('view engine', '.hbs')
 
-//Middlewares
-// app.use(session({
-//     secret: 'luisknifesqlsession',
-//     resave: false,
-//     saveUninitialized: false,
-//     store: new MySQLStore(database)
-// }))
-// app.use(flash())
+// Middlewares
+app.use(session({
+    secret: 'luisknifesqlsession',
+    resave: false,
+    saveUninitialized: false,
+    store: new MySQLStore(database)
+}))
+app.use(flash())
 app.use(morgan('dev'))
-// app.use(express.urlencoded({extended: false}))
-// app.use(express.json())
-// app.use(passport.initialize())
-// app.use(passport.session())
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
+app.use(passport.initialize())
+app.use(passport.session())
 
 //Global variables
 app.use((req, res, next) => {
+    app.locals.success_msg = req.flash('success_msg')
+    app.locals.error_msg = req.flash('error_msg')
+    app.locals.usuario = req.user
     next()
 })
 
