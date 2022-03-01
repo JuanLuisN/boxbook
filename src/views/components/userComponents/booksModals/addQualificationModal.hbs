@@ -1,0 +1,35 @@
+<div class="modal fade" id="addQualification{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">AGREGAR CALIFICACIÓN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/addQualification/{{id}}" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Calificación</label>
+                        <select name="puntaje" class="form-control ml-auto btn btn-dark text-justify" id="exampleFormControlSelect1">
+                            <option value="1">Muy baja</option>
+                            <option value="2">Baja</option>
+                            <option value="3">Media</option>
+                            <option value="4">Alta</option>
+                            <option value="5">Muy alta</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <textarea name="resena" placeholder="Reseña" cols="30" rows="5" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btnGuardarAvance" class="btn btn-dark">Guardar calificación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

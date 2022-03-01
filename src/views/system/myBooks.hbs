@@ -1,0 +1,82 @@
+<div class="container mt-4">
+    <div class="card shadow mb-4">
+        <div class="card-header bg-dark rounded">
+            <h2 class="text-center text-light mt-2">MIS LIBROS</h2>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <input autocomplete="off" id="searchBooks" class="form-control mr-sm-2 me-auto"
+                    placeholder="Buscar libros">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-md-center aling-items-center">
+            {{#each libros}}
+            <div class="col col-12 col-sm-12 col-md-4 col-lg-4 mb-5">
+                <div class="card shadow text-center h-100">
+                    <div class="card-body">
+                        <img src="{{imagen}}" class="img-fluid mb-2">
+                        <h5 class="mb-4">{{titulo}}</h5>
+                        <p>Por: <span class="text-secondary">{{autor}}</span></p>
+                        <p>Paginas: <span class="text-secondary">{{paginas}}</span></p>
+                        {{#if (estaPendiente status)}}
+                        <p>Estado: <span class="text-danger">{{status}}</span></p>
+                        {{/if}}
+                        {{#if (estaLeyendo status)}}
+                        <p>Estado: <span class="text-success">{{status}}</span></p>
+                        {{/if}}
+                        {{#if (estaLeido status)}}
+                        <p>Estado: <span class="text-secondary">{{status}}</span></p>
+                        {{/if}}
+                    </div>
+                    <div class="card-footer">
+                        {{#if (estaPendiente status)}}
+                        <form action="/switchToReading/{{id}}" method="POST">
+                            <button type="submit" data-toggle="modal" data-target="#deleteTaskModal{{id}}"
+                                class="btn btn-success btn-block mb-2">
+                                <i class="fas fa-book-reader"></i> Leer
+                            </button>
+                        </form>
+                        {{/if}}
+                        {{#if (estaLeyendo status)}}
+                        <a href="/myAdvances={{id}}" class="btn btn-info btn-block mb-2"><i class="fas fa-eye"></i> Mis
+                            avances</a>
+                        {{/if}}
+                        {{#if (estaLeido status)}}
+                        {{#if (estaCalificado puntaje)}}
+                        <button type="button" data-toggle="modal" data-target="#addQualification{{id}}"
+                            class="btn btn-primary btn-block mb-2">
+                            <i class="fas fa-star"></i> Calificar
+                        </button>
+                        {{else}}
+                        <a href="/myAdvances={{id}}" class="btn btn-info btn-block mb-2">
+                            <i class="fas fa-comments"></i> Mis comentarios
+                        </a>
+                        <button type="button" data-toggle="modal" data-target="#viewReview{{id}}"
+                            class="btn btn-info btn-block mb-2">
+                            <i class="fas fa-comment-alt"></i> Ver reseña
+                        </button>
+                        {{/if}}
+                        {{/if}}
+                        <button type="button" data-toggle="modal" data-target="#deleteBook{{id}}"
+                            class="btn btn-danger btn-block">
+                            <i class="fa fa-trash" aria-hidden="true"></i> Eliminar libro
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {{>userComponents/booksModals/viewReviewModal}}
+            {{>userComponents/booksModals/deleteBookModal}}
+            {{>userComponents/booksModals/addQualificationModal}}
+            {{else}}
+            <h1 class="text-center mt-4">No tienes libros agregados<br>
+                <small>Agrega un nuevo libro</small>
+            </h1>
+            {{/each}}
+        </div>
+    </div>
+</div>

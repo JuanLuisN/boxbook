@@ -2,3 +2,17 @@ body{
     background: #f3efef;
     font-family: 'Josefin Sans', sans-serif;
 }
+
+.letra{
+    background: #f3efef;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.rating {
+    width: 180px;
+ }
+ 
+ .rating__star {
+    cursor: pointer;
+    color: #dabd18b2;
+ }

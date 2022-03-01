@@ -1,0 +1,37 @@
+<div class="container mt-4 letra">
+    <div class="card shadow mb-4">
+        <div class="card-body bg-dark rounded text-white">
+            <a href="/myBooks" class="btn btn-danger mr-auto"><i class="fas fa-angle-left"></i> Regresar</a>
+            <div class="text-center">
+                <img src="{{libro.imagen}}" class="mx-auto d-block mb-2">
+                <h4>{{libro.titulo}}</h4>
+                <p>Paginas: <span class="text-danger">{{nopagina}}</span> / <span class="text-success">{{libro.paginas}}</span></p>
+                {{#if (isCompleteBook nopagina libro.paginas)}}
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addAdvance">
+                    <i class="fas fa-pencil-alt"></i> Agregar avance
+                </button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-md-center aling-items-center">
+            {{#each avances}}
+            <div class="col col-12 col-sm-12 col-md-4 col-lg-4 mb-5">
+                <div class="card shadow h-100">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h5>Comentario pagina {{paginasLeidas}}</h5>
+                        <p><u>{{fechaAvance}}</u></p>
+                    </div>
+                    <div class="card-body text-justify">
+                        <p>{{comentario}}</p>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <h1 class="text-center mt-4">No tienes avances registrados</h1>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{>userComponents/advancesModals/addAdvanceModal}}

@@ -51,6 +51,7 @@ app.use((req, res, next) => {
 app.use(require('./routes/landingPage.routes'))
 app.use(require('./routes/auth/auth.routes'))
 app.use(require('./routes/auth/profile.routes'))
+app.use(require('./routes/systemRoutes/user.routes'))
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')))
