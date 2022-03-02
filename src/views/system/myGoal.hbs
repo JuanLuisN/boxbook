@@ -1,0 +1,39 @@
+<div class="container mt-5"> <br>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-6">
+                            <img src="https://juanluisn.blob.core.windows.net/imagenes/Achievement _Monochromatic.png"
+                                class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="mt-2 text-center">¡Ingresa tu objetivo de lecturas al año!</h4>
+                            <hr class="mb-3">
+                            <p class="text-center">¡Proponte un objetivo de lecturas al completar el año! <br>
+                            Un objetivo sano y de mucho aprendizaje</p>
+                            <form action="/addObjetivo" method="POST">
+                                <div class="form-group">
+                                    <label for="">Objetivo anual:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-bullseye"></i>
+                                            </div>
+                                        </div>
+                                        <input type="number" name="objetivoAnual" placeholder="Objetivo anual"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-dark btn-block">¡Agregar objetivo!</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

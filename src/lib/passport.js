@@ -38,7 +38,8 @@ passport.use('local.signup', new LocalStrategy({
             correo,
             contra,
             pais,
-            ciudad
+            ciudad,
+            objetivoAnual: 0
         }
         nuevoUsuario.contra = await helpers.encryptPassword(contra)
         const resultado = await connection.query('insert into usuarios set ?', [nuevoUsuario])

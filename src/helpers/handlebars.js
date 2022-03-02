@@ -41,3 +41,7 @@ hbs.handlebars.registerHelper('isCompleteBook', (avance, paginas) => {
     console.log(avance)
     return avance != paginas ? true : false 
 })
+
+hbs.handlebars.registerHelper('hasGoal', (objetivo) => {
+    return objetivo > 0 ? true : false
+})

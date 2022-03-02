@@ -1,3 +1,4 @@
+const connection = require('../../database')
 const passport = require('passport')
 
 controller = {}
@@ -11,13 +12,13 @@ controller.renderSignup = (req, res) => {
 }
 
 controller.signIn = passport.authenticate('local.signin', {
-    successRedirect: '/',
+    successRedirect: '/myBooks',
     failureRedirect: '/signin',
     failureFlash: true
 })
 
 controller.signUp = passport.authenticate('local.signup', {
-    successRedirect: '/',
+    successRedirect: '/myBooks',
     failureRedirect: '/signup',
     failureFlash: true
 })

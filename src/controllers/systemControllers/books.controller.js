@@ -4,10 +4,27 @@ const helpers = require('../../database')
 controller = {}
 
 controller.renderLibros = async (req, res) => {
+    const objetivo = await connection.query(`select objetivoAnual from usuarios where id = ${req.user.id}`)
     const libros = await connection.query(`select * from userbooks where fk_usuario = ${req.user.id} order by id DESC`)
-    res.render('system/myBooks',{
-        libros
-    })
+    if(objetivo[0].objetivoAnual == 0){
+        res.render('system/myGoal')
+    }else{
+        res.render('system/myBooks',{
+            libros
+        })
+    }
+}
+
+controller.addObjetivo = async (req, res) => {
+    try {
+        await connection.query('update usuarios set ? where id = ?', [req.body, req.user.id])
+        req.flash('success_msg', 'Se agrego correctamente tu objetivo de lecturas al año')
+        res.redirect('/myBooks')
+    } catch (e) {
+        console.log(e)
+        req.flash('error_msg', 'Hubo un error, intentalo de nuevo')
+        res.redirect('/myBooks')
+    }
 }
 
 controller.addBook = async (req, res) => {

@@ -1,0 +1,57 @@
+<div class="modal fade" id="editProfile{{usuario.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">EDITAR MI PERFIL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/editProfile" method="POST">
+        <div class="modal-body">
+
+          <div class="form-group">
+            <input type="text" name="username" value="{{usuario.username}}" placeholder="Nombre de usuario"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="nombreCompleto" value="{{usuario.nombreCompleto}}" placeholder="Nombre"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="correo" value="{{usuario.correo}}" placeholder="Correo" class="form-control">
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <input type="password" name="contra" placeholder="Contraseña" class="form-control">
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <input type="password" placeholder="Confirmar contraseña" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <input type="text" name="pais" value="{{usuario.pais}}" placeholder="Pais" class="form-control">
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <input type="text" name="ciudad" value="{{usuario.ciudad}}" placeholder="Ciudad" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="number" name="objetivoAnual" value="{{usuario.objetivoAnual}}" placeholder="Objetivo Anual"
+              class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-dark">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

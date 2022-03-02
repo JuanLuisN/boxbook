@@ -24,8 +24,11 @@
                                     <hr>
                                     <h5>Objetivo de lecturas al año</h5>
                                     <p class="text-success">{{usuario.objetivoAnual}}</p>
-                                    <button class="btn btn-success btn-block"><i class="fas fa-edit"></i> Editar
-                                        perfil</button>
+                                    <button type="button" class="btn btn-success btn-block" data-toggle="modal"
+                                        data-target="#editProfile{{usuario.id}}">
+                                        <i class="fas fa-edit"></i> Editar perfil
+                                    </button>
+
                                 </div>
                             </div>
                         </div>
@@ -35,3 +38,4 @@
         </div>
     </div>
 </div>
+{{>userComponents/profileModals/editProfileModal}}

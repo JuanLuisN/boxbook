@@ -13,4 +13,6 @@ router.get('/deleteBook/:id', booksController.deleteBook)
 router.get('/myAdvances=:id', advancesController.renderAvances)
 router.post('/myAdvances/add/:id', advancesController.addAdvances)
 
+router.post('/addObjetivo', booksController.addObjetivo)
+
 module.exports = router

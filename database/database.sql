@@ -10,7 +10,8 @@ create table usuarios(
     contra varchar(300),
     pais varchar(50),
     ciudad varchar(50),
-    objetivoAnual int
+    objetivoAnual int,
+    librosLeidos int
 );
 
 create table userBooks(
@@ -23,7 +24,7 @@ create table userBooks(
     fechaPublicacion varchar(50),
     status varchar(50),
     puntaje int,
-    revisar varchar(255),
+    resena varchar(255),
     foreign key(fk_usuario)references usuarios(id)
 );
 
@@ -31,6 +32,7 @@ create table userBooksAdvance(
      id int primary key auto_increment,
      fk_usuario int,
      fk_libro int,
+     fechaAvance varchar(100),
      paginasLeidas int,
      comentario varchar(250),
      foreign key (fk_usuario)referencers usuarios(id),
