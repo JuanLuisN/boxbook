@@ -30,7 +30,18 @@
                         <p>Estado: <span class="text-success">{{status}}</span></p>
                         {{/if}}
                         {{#if (estaLeido status)}}
-                        <p>Estado: <span class="text-secondary">{{status}}</span></p>
+                        <p>
+                            Estado: <span class="text-secondary">{{status}}</span>
+                            {{#if (estaCalificado puntaje)}}
+                            <a href="/myAdvances={{id}}" class="btn btn-info">
+                                <i class="fas fa-comments"></i>
+                            </a>
+                            {{else}}
+                            <a href="/myAdvances={{id}}" class="btn btn-info">
+                                <i class="fas fa-comments"></i>
+                            </a>
+                            {{/if}}
+                        </p>
                         {{/if}}
                     </div>
                     <div class="card-footer">
@@ -53,9 +64,6 @@
                             <i class="fas fa-star"></i> Calificar
                         </button>
                         {{else}}
-                        <a href="/myAdvances={{id}}" class="btn btn-info btn-block mb-2">
-                            <i class="fas fa-comments"></i> Mis comentarios
-                        </a>
                         <button type="button" data-toggle="modal" data-target="#viewReview{{id}}"
                             class="btn btn-info btn-block mb-2">
                             <i class="fas fa-comment-alt"></i> Ver reseña

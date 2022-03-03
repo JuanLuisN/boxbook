@@ -1,15 +1,15 @@
-<div class="modal fade" id="deleteBook{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteFriend{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <p class="text-center">
-                    ¿Quieres eliminar el libro?<br>
+                    ¿Quieres eliminar a tu amigo {{nombreCompleto}}?<br>
                     <small class="bg-danger rounded text-white p-2">Una vez completada la acción, no hay vuelta atrás</small>
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                <a href="/deleteBook/{{id}}" class="btn btn-dark">Eliminar libro</a>
+                <a href="/deleteFriend" class="btn btn-dark">Eliminar amigo</a>
             </div>
         </div>
     </div>

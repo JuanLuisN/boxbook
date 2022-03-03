@@ -8,11 +8,6 @@ body{
     font-family: 'Josefin Sans', sans-serif;
 }
 
-.rating {
-    width: 180px;
- }
- 
- .rating__star {
-    cursor: pointer;
-    color: #dabd18b2;
- }
+.fondo-color{
+    background-color: rgba(0, 0, 0, 0.507);
+}

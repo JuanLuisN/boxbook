@@ -1,0 +1,68 @@
+<div class="container mt-4 letra">
+    <div class="card shadow mb-4">
+        <div class="card-body bg-dark rounded text-white">
+            <a href="/myFriends" class="btn btn-danger mr-auto"><i class="fas fa-angle-left"></i> Regresar</a>
+            <div class="text-center">
+                <i class="fas fa-portrait fa-10x"></i>
+                <h4 class="mt-3">{{amigo}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-md-center aling-items-center">
+            {{#each libros}}
+            <div class="col col-12 col-sm-12 col-md-4 col-lg-4 mb-5">
+                <div class="card shadow text-center h-100">
+                    <div class="card-body">
+                        <img src="{{imagen}}" class="img-fluid mb-2">
+                        <h5 class="mb-4">{{titulo}}</h5>
+                        <p>Por: <span class="text-secondary">{{autor}}</span></p>
+                        <p>Paginas: <span class="text-secondary">{{paginas}}</span></p>
+                        {{#if (estaPendiente status)}}
+                        <p>Estado: <span class="text-danger">{{status}}</span></p>
+                        {{/if}}
+                        {{#if (estaLeyendo status)}}
+                        <p>Estado: <span class="text-success">{{status}}</span></p>
+                        {{/if}}
+                        {{#if (estaLeido status)}}
+                        <p>
+                            Estado: <span class="text-secondary">{{status}}</span>
+                            {{#if (estaCalificado puntaje)}}
+                            {{else}}
+                            <a href="/friendAdvances={{id}}" class="btn btn-info">
+                                <i class="fas fa-comments"></i>
+                            </a>
+                            {{/if}}
+                        </p>
+                        {{/if}}
+                    </div>
+                    {{#if (estaPendiente status)}}
+                    {{else}}
+                    <div class="card-footer">
+                        {{#if (estaLeyendo status)}}
+                        <a href="/friendAdvances={{id}}" class="btn btn-info btn-block mb-2"><i class="fas fa-eye"></i>
+                            Ver sus avances</a>
+                        {{/if}}
+                        {{#if (estaCalificado puntaje)}}
+                        <a href="/friendAdvances={{id}}" class="btn btn-info btn-block mb-2"><i class="fas fa-eye"></i>
+                            Ver sus avances</a>
+                        {{else}}
+                        <button type="button" data-toggle="modal" data-target="#viewReview{{id}}"
+                            class="btn btn-info btn-block mb-2 border border-success">
+                            <i class="fas fa-comment-alt"></i> Ver reseña
+                        </button>
+                        {{/if}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{>userComponents/booksModals/viewReviewModal}}
+            {{>userComponents/booksModals/addQualificationModal}}
+            {{else}}
+            <h1 class="text-center mt-4">Este usuario no tiene libros agregados<br>
+            </h1>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{>userComponents/advancesModals/addAdvanceModal}}

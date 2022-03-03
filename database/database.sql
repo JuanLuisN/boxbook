@@ -29,12 +29,21 @@ create table userBooks(
 );
 
 create table userBooksAdvance(
-     id int primary key auto_increment,
-     fk_usuario int,
-     fk_libro int,
-     fechaAvance varchar(100),
-     paginasLeidas int,
-     comentario varchar(250),
-     foreign key (fk_usuario)referencers usuarios(id),
-     foreign key (fk_libro)referencers userBooks(id)
+    id int primary key auto_increment,
+    fk_usuario int,
+    fk_libro int,
+    fechaAvance varchar(100),
+    paginasLeidas int,
+    comentario varchar(250),
+    foreign key (fk_usuario)referencers usuarios(id),
+    foreign key (fk_libro)referencers userBooks(id)
  );
+
+ create table friendship (
+	primer_user_id int,
+   segundo_user_id int,
+   status varchar(100),
+   primary key(primer_user_id, segundo_user_id),
+   foreign key (primer_user_id) references usuarios(id),
+   foreign key (segundo_user_id) references usuarios(id)
+);

@@ -4,12 +4,19 @@ controller = {}
 
 controller.renderAvances = async (req, res) => {
     const { id } = req.params
-    const avances = await connection.query(`select * from userbooksadvance where fk_libro = ${id} and fk_usuario = ${req.user.id}`)
-    const ultimaPag = await connection.query(`select MAX(paginasLeidas) as nopagina from userbooksadvance where fk_libro = ${id} and fk_usuario = ${req.user.id}`)
-    const libros = await connection.query(`select autor, titulo, paginas, imagen from userbooks where id = ${id}`)
-    res.render('system/myAdvances.hbs',{
-        avances, libro: libros[0], nopagina: ultimaPag[0].nopagina, id
-    })
+    const comentarios = await connection.query(`select count(*) as registros from userbooksadvance where fk_libro = ${id}`)
+    const libro = await connection.query(`select status from userbooks where id = ${id}`)
+    if (comentarios[0].registros == 0 && libro[0].status == 'Leído') {
+        req.flash('error_msg', 'Este libro no cuenta con comentarios de avances cuando se estaba leyendo')
+        res.redirect('/myBooks')
+    } else {
+        const avances = await connection.query(`select * from userbooksadvance where fk_libro = ${id} and fk_usuario = ${req.user.id}`)
+        const ultimaPag = await connection.query(`select MAX(paginasLeidas) as nopagina from userbooksadvance where fk_libro = ${id} and fk_usuario = ${req.user.id}`)
+        const libros = await connection.query(`select autor, titulo, paginas, imagen from userbooks where id = ${id}`)
+        res.render('system/myAdvances.hbs',{
+            avances, libro: libros[0], nopagina: ultimaPag[0].nopagina, id
+        })
+    }
 }
 
 controller.addAdvances = async (req, res) => {

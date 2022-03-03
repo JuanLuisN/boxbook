@@ -45,3 +45,15 @@ hbs.handlebars.registerHelper('isCompleteBook', (avance, paginas) => {
 hbs.handlebars.registerHelper('hasGoal', (objetivo) => {
     return objetivo > 0 ? true : false
 })
+
+hbs.handlebars.registerHelper('enviada', (estado) => {
+    return estado == 'enviada' ? true : false
+})
+
+hbs.handlebars.registerHelper('pendiente', (estado) => {
+    return estado == 'pendiente' ? true : false
+})
+
+hbs.handlebars.registerHelper('amigos', (estado) => {
+    return estado == 'amigos' ? true : false
+})

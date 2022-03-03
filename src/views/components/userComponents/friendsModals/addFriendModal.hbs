@@ -1,0 +1,69 @@
+<div class="modal fade" id="addFriendModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">AGREGAR AMIGOS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <input autocomplete="off" id="searchUsuarios" class="form-control mr-sm-2 me-auto"
+                        placeholder="Buscar amigos">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr class="d-none">
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Correo electronico</th>
+                                <th scope="col">Pais</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBodyUsers">
+                            {{#each usuarios}}
+                            <tr class="d-none">
+                                <th scope="row">{{username}}</th>
+                                <td>{{correo}}</td>
+                                <td>{{pais}}</td>
+                                <td>
+                                    <a href="/sendRequest/{{id}}" class="btn btn-success btn-block">
+                                    <i class="fas fa-paper-plane"></i> Enviar solicitud
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const input = document.getElementById("searchUsuarios")
+    const tBody = document.getElementById("tBodyUsers")
+    input.addEventListener('input', () => {
+        for (let i = 0; i < tBody.rows.length; i++) {
+            if (!tBody.rows[i].childNodes[3].textContent.toLowerCase().includes(input.value.toString().toLowerCase())) {
+                tBody.rows[i].classList.add('d-none')
+            } else {
+                tBody.rows[i].classList.remove('d-none')
+            }
+            if (input.value == "") {
+                tBody.rows[i].classList.add('d-none')
+            }
+        }
+    })
+</script>
