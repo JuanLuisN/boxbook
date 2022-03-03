@@ -35,8 +35,8 @@ create table userBooksAdvance(
     fechaAvance varchar(100),
     paginasLeidas int,
     comentario varchar(250),
-    foreign key (fk_usuario)referencers usuarios(id),
-    foreign key (fk_libro)referencers userBooks(id)
+    foreign key (fk_usuario)references usuarios(id),
+    foreign key (fk_libro)references userBooks(id)
  );
 
  create table friendship (
